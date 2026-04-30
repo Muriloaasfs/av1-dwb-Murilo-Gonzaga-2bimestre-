@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Pokémon</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-light">
+    <div class="container-fluid py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <!-- Spinner de carregamento -->
+                <div id="loading-spinner" class="d-flex justify-content-center mb-4">
+                    <div class="spinner-border text-neon" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                </div>
+                <!-- Conteúdo dos detalhes -->
+                <div id="pokemon-details" class="d-none">
+                    <!-- Card principal com Glassmorphism -->
+                    <div class="pokemon-details-card">
+                        <div class="row">
+                            <!-- Coluna da Esquerda: Imagem -->
+                            <div class="col-md-6 text-center">
+                                <div class="pokemon-image-container">
+                                    <img id="pokemon-sprite" src="" alt="" class="pokemon-sprite-large">
+                                </div>
+                            </div>
+                            <!-- Coluna da Direita: Detalhes -->
+                            <div class="col-md-6">
+                                <h2 id="pokemon-name" class="pokemon-name-large"></h2>
+                                <div id="pokemon-types" class="mb-4"></div>
+                                <h4>Status</h4>
+                                <div id="pokemon-stats"></div>
+                                <!-- Botão voltar dentro do card -->
+                                <div class="text-center mt-4">
+                                    <button id="back-button" class="btn btn-outline-neon btn-lg">Voltar para a Pokédex</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Alerta de erro -->
+                <div id="error-alert" class="alert alert-danger d-none" role="alert">
+                    <strong>Erro!</strong> Não foi possível carregar os detalhes do Pokémon. Tente novamente mais tarde.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="js/detalhes.js"></script>
+</body>
+</html>
