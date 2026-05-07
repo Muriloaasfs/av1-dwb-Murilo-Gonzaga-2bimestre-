@@ -13,6 +13,29 @@ body {
     text-shadow: 0 0 10px #002fff6e, 0 0 20px #002fff6e, 0 0 30px #002fff6e;
 }
 
+/* Barra de pesquisa */
+.search-input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(0, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(0, 255, 255, 0.8) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4) !important;
+    outline: none !important;
+}
+
 /* Cards com Glassmorphism */
 .pokemon-card {
     background: rgba(255, 255, 255, 0.1);

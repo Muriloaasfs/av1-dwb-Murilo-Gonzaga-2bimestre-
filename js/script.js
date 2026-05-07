@@ -4,6 +4,10 @@
 const loadingSpinner = document.getElementById('loading-spinner');
 const pokemonGrid = document.getElementById('pokemon-grid');
 const errorAlert = document.getElementById('error-alert');
+const searchInput = document.getElementById('search-input');
+
+// Variável para armazenar a lista completa de Pokémons
+let allPokemonList = [];
 
 // Função principal para carregar os Pokémon
 async function loadPokemon() {
@@ -35,6 +39,9 @@ async function loadPokemon() {
 
         // Ordena a lista pelo ID para manter a ordem correta da Pokédex
         pokemonDetailsList.sort((a, b) => a.id - b.id);
+        
+        // Armazena a lista completa para pesquisa
+        allPokemonList = pokemonDetailsList;
 
         // Esconde o spinner e mostra o grid
         loadingSpinner.classList.add('d-none');
@@ -44,6 +51,11 @@ async function loadPokemon() {
         pokemonDetailsList.forEach(details => {
             createPokemonCard(details);
         });
+        
+        // Adiciona event listener para pesquisa
+        if (searchInput) {
+            searchInput.addEventListener('input', filterPokemon);
+        }
 
     } catch (error) {
         // Em caso de erro, esconde o spinner e mostra o alerta
@@ -58,6 +70,7 @@ function createPokemonCard(pokemonDetails) {
     // Cria o elemento do card
     const card = document.createElement('div');
     card.className = 'col-12 col-sm-6 col-md-4 col-lg-3';
+    card.setAttribute('data-pokemon-name', pokemonDetails.name);
 
     // Obtém a imagem do sprite frontal diretamente dos detalhes
     const imageUrl = pokemonDetails.sprites.front_default;
@@ -72,6 +85,22 @@ function createPokemonCard(pokemonDetails) {
 
     // Adiciona o card ao grid
     pokemonGrid.appendChild(card);
+}
+
+// Função para filtrar Pokémons pela pesquisa
+function filterPokemon() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const allCards = pokemonGrid.querySelectorAll('[data-pokemon-name]');
+    
+    allCards.forEach(card => {
+        const pokemonName = card.getAttribute('data-pokemon-name');
+        
+        if (pokemonName.includes(searchTerm)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 // Função para redirecionar para a página de detalhes
