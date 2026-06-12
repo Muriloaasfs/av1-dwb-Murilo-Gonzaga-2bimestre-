@@ -12,17 +12,17 @@ async function loadPokemonDetails() {
         // Mostra o spinner de carregamento
         loadingSpinner.classList.remove('d-none');
 
-        // Captura o parâmetro 'name' da URL usando URLSearchParams
+        // Captura o parâmetro 'id' da URL usando URLSearchParams
         const urlParams = new URLSearchParams(window.location.search);
-        const pokemonName = urlParams.get('name');
+        const pokemonId = urlParams.get('id');
 
         // Verifica se o parâmetro foi fornecido
-        if (!pokemonName) {
-            throw new Error('Nome do Pokémon não fornecido na URL');
+        if (!pokemonId) {
+            throw new Error('ID do Pokémon não fornecido na URL');
         }
 
-        // Faz o fetch para a API PokéAPI usando o nome do Pokémon
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        // Faz o fetch para a API PokéAPI usando o ID do Pokémon
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
 
         // Verifica se a resposta foi bem-sucedida
         if (!response.ok) {

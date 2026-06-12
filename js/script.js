@@ -77,7 +77,7 @@ function createPokemonCard(pokemonDetails) {
 
     // Cria o conteúdo do card com glassmorphism
     card.innerHTML = `
-        <div class="pokemon-card h-100" onclick="goToDetails('${pokemonDetails.name}')">
+        <div class="pokemon-card h-100" onclick="goToDetails(${pokemonDetails.id})">
             <img src="${imageUrl}" alt="${pokemonDetails.name}" class="pokemon-image">
             <div class="pokemon-name">${pokemonDetails.name}</div>
         </div>
@@ -104,9 +104,9 @@ function filterPokemon() {
 }
 
 // Função para redirecionar para a página de detalhes
-function goToDetails(name) {
-    // Redireciona para detalhes.html com o parâmetro name
-    window.location.href = `detalhes.html?name=${name}`;
+function goToDetails(pokemonId) {
+    // Redireciona para detalhes.html com o parâmetro id
+    window.location.href = `detalhes.html?id=${pokemonId}`;
 }
 
 // Carrega os Pokémon quando a página é carregada
